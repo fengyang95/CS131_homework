@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 # CS131_homework
 CS131 Computer Vision: Foundations and Applications homework
+This is my solution of the homework.
 =======
 # CS131: Computer Vision Foundations and Applications
 This repository contains the released assignments for the fall 2017 iteration of [CS 131](http://vision.stanford.edu/teaching/cs131_fall1718/), a course at Stanford taught by [Juan Carlos Niebles](http://www.niebles.net) and [Ranjay Krishna](http://ranjaykrishna.com).
