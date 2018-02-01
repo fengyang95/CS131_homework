@@ -390,9 +390,13 @@ def enlarge(image, size, axis=1, efunc=energy_function, cfunc=compute_cost):
 
     ### YOUR CODE HERE
     seams = find_seams(out,size-W,axis=1,efunc=efunc,cfunc=cfunc)
-    print('seams.shape: ',seams.shape)
-    for seam in seams:
-        out=duplicate_seam(out,seam)
+    seams_indices = np.argsort(seams,axis=1)
+    useful = seams_indices[:,W-size:W]
+    cols = useful.shape[1]
+    for i in range(cols):
+        useful[:,i]+=i
+        seam = useful[:,i].reshape((useful.shape[0]))
+        out = duplicate_seam(out,seam)
     ### END YOUR CODE
 
     if axis == 0:
@@ -434,7 +438,33 @@ def compute_forward_cost(image, energy):
     paths[0] = 0  # we don't care about the first row of paths
 
     ### YOUR CODE HERE
-    pass
+    for i in range(1,H):
+        for j in range(W):
+            if j-1>=0:
+                c1 = cost[i-1,j-1]
+            else:
+                c1 = 1e10
+            c2 = cost[i-1,j]
+            if j+1<W:
+                c3 = cost[i-1,j+1]
+            else:
+                c3 = 1e10
+            if j>0 and j<W-1:
+                c1+=(abs(image[i,j+1]-image[i,j-1])+abs(image[i-1,j]-image[i,j-1]))
+                c2+=(abs(image[i,j+1]-image[i,j-1]))
+                c3+=(abs(image[i,j+1]-image[i,j-1])+abs(image[i-1,j]-image[i,j+1]))
+            elif j>0:
+                c1+=abs(image[i-1,j]-image[i,j-1])
+            elif j<W-1:
+                c3+=abs(image[i-1,j]-image[i,j+1])
+            minc = min(min(c1,c2),c3)
+            cost[i,j]=energy[i,j]+minc
+            if minc==c1:
+                paths[i,j]=-1
+            elif minc==c2:
+                paths[i,j]=0
+            else:
+                paths[i,j]=1
     ### END YOUR CODE
 
     # Check that paths only contains -1, 0 or 1
@@ -474,8 +504,13 @@ def reduce_fast(image, size, axis=1, efunc=energy_function, cfunc=compute_cost):
 
     assert size > 0, "Size must be greater than zero"
 
+    # not implemented correctly, just the same as normal reduce for test
     ### YOUR CODE HERE
-    pass
+    while out.shape[1] > size:
+        energy = efunc(out)
+        cost, paths = cfunc(out, energy)
+        seam = backtrack_seam(paths, np.argmin(cost[-1]))
+        out = remove_seam(out, seam)
     ### END YOUR CODE
 
     assert out.shape[1] == size, "Output doesn't have the right shape"
