@@ -32,13 +32,29 @@ def kmeans(features, k, num_iters=100):
     # Randomly initalize cluster centers
     idxs = np.random.choice(N, size=k, replace=False)
     centers = features[idxs]
+    # centers = np.array([[-1, 0], [0, 1], [1, 0], [0, -1]])
     assignments = np.zeros(N)
-
+    cluster_to_idx={}
+    for i in range(k):
+        cluster_to_idx[i]=[]
     for n in range(num_iters):
         ### YOUR CODE HERE
-        pass
+        for i in range(N):
+            distances=np.sqrt(np.sum(np.square(centers-features[i]),axis=1))
+            assignments[i]=np.argmin(distances)
+            cluster_to_idx[int(assignments[i])].append(i)
+        for j in range(k):
+            centers[j]=np.mean(features[np.array(cluster_to_idx[j])])
+            min_dist=1e10
+            index = -1
+            for ii in range(len((cluster_to_idx[j]))):
+                dist = np.sum((centers[j]-features[cluster_to_idx[j][ii]])**2)
+                if dist<min_dist:
+                    min_dist=dist
+                    index = cluster_to_idx[j][ii]
+            centers[j]=features[index]
+            cluster_to_idx[j] = []
         ### END YOUR CODE
-
     return assignments
 
 def kmeans_fast(features, k, num_iters=100):
@@ -68,13 +84,26 @@ def kmeans_fast(features, k, num_iters=100):
     # Randomly initalize cluster centers
     idxs = np.random.choice(N, size=k, replace=False)
     centers = features[idxs]
+    # centers = np.array([[-1,0],[0,1],[1,0],[0,-1]])
     assignments = np.zeros(N)
 
+    delta = np.zeros(shape=(N,k),dtype=np.int32)
+    # from sklearn import cluster
+    # assignments=cluster.KMeans(k).fit(features).labels_
     for n in range(num_iters):
         ### YOUR CODE HERE
-        pass
+        distances = np.zeros(shape=(N,k),dtype=np.float32)
+        for i in range(k):
+            distances[:,i] = np.sum((features-centers[i])**2,axis=1)
+        indices=np.argmin(distances,axis=1)
+        for j in range(N):
+            delta[j,indices[j]]=1
+        new_centers = np.zeros_like(centers)
+        for i in range(k):
+            new_centers[i]= np.mean(features[np.nonzero(delta[:,i])])
+            new_centers[i]=features[np.argmin(np.sum(features[np.nonzero(delta[:,i])]-new_centers[i]))]
+    assignments = delta.nonzero()[1]
         ### END YOUR CODE
-
     return assignments
 
 
@@ -89,7 +118,7 @@ def hierarchical_clustering(features, k):
         Compute the distance between all pairs of clusters
         Merge the pair of clusters that are closest to each other
 
-    We will use Euclidean distance to defeine distance between two clusters.
+    We will use Euclidean distance to define distance between two clusters.
 
     Recomputing the centroids of all clusters and the distances between all
     pairs of centroids at each step of the loop would be very slow. Thankfully
@@ -124,7 +153,7 @@ def hierarchical_clustering(features, k):
 
     while n_clusters > k:
         ### YOUR CODE HERE
-        pass
+        n_clusters-=1
         ### END YOUR CODE
 
     return assignments
@@ -145,7 +174,8 @@ def color_features(img):
     features = np.zeros((H*W, C))
 
     ### YOUR CODE HERE
-    pass
+    for i in range(C):
+        features[:,i]=img[:,:,i].reshape((H*W,))
     ### END YOUR CODE
 
     return features
@@ -173,7 +203,14 @@ def color_position_features(img):
     features = np.zeros((H*W, C+2))
 
     ### YOUR CODE HERE
-    pass
+    x = np.mgrid[:H,:W][0]
+    y = np.mgrid[:H,:W][1]
+    new_img=np.dstack((img,x,y))
+    mean = np.mean(new_img)
+    std = np.std(new_img)
+    new_img = (new_img-mean)/std
+    for i in range(C+2):
+        features[:,i]=new_img[:,:,i].reshape((H*W,))
     ### END YOUR CODE
 
     return features
@@ -189,7 +226,7 @@ def my_features(img):
     """
     features = None
     ### YOUR CODE HERE
-    pass
+    features = color_position_features(img)
     ### END YOUR CODE
     return features
     
@@ -213,7 +250,10 @@ def compute_accuracy(mask_gt, mask):
 
     accuracy = None
     ### YOUR CODE HERE
-    pass
+    total = mask.shape[0]*mask.shape[1]
+    tp = len(np.nonzero(mask*mask_gt)[0])
+    tn = total-len(np.nonzero(mask+mask_gt)[0])
+    accuracy = (tp+tn)/total
     ### END YOUR CODE
 
     return accuracy
