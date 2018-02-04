@@ -21,7 +21,7 @@ def hog_feature(image, pixel_per_cell = 8):
         hogImage: an image representation of hog provided by skimage
     '''
     ### YOUR CODE HERE
-    pass
+    hogFeature,hogImage=feature.hog(image,pixels_per_cell=(pixel_per_cell,pixel_per_cell),visualise=True)
     ### END YOUR CODE
     return (hogFeature, hogImage)
 
@@ -52,7 +52,16 @@ def sliding_window(image, base_score, stepSize, windowSize, pixel_per_cell=8):
     response_map = np.zeros((H//stepSize+1, W//stepSize+1))
     
     ### YOUR CODE HERE
-    pass
+    for r in range(0,H+1,stepSize):
+        for c in range(0,W+1,stepSize):
+            window = pad_image[r:r+winH,c:c+winW]
+            hogFeature,_=hog_feature(window,pixel_per_cell=pixel_per_cell)
+            score = hogFeature.T.dot(base_score)
+            response_map[r//stepSize,c//stepSize]=score
+            if score>max_score:
+                max_score=score
+                maxr = r-winH//2
+                maxc = c-winW//2
     ### END YOUR CODE
     
     
@@ -81,7 +90,11 @@ def pyramid(image, scale=0.9, minSize=(200, 100)):
     images.append((current_scale, image))
     # keep looping over the pyramid
     ### YOUR CODE HERE
-    pass
+    img = image.copy()
+    while img.shape[0]>=minSize[0]/scale and img.shape[1]>minSize[1]/scale:
+        current_scale = current_scale*scale
+        img = resize(image,output_shape=(int(round(image.shape[0]*current_scale)),int(round(image.shape[1]*current_scale))))
+        images.append((current_scale,img))
     ### END YOUR CODE
     return images
 
@@ -108,7 +121,14 @@ def pyramid_score(image,base_score, shape, stepSize=20, scale = 0.9, pixel_per_c
     max_response_map =np.zeros(image.shape)
     images = pyramid(image, scale)
     ### YOUR CODE HERE
-    pass
+    for current_scale,img in images:
+        score,r,c,response_map=sliding_window(img,base_score=base_score,stepSize=stepSize,windowSize=shape,pixel_per_cell=pixel_per_cell)
+        if score>max_score:
+            max_score = score
+            maxr = r
+            maxc = c
+            max_scale =current_scale
+            max_response_map =response_map
     ### END YOUR CODE
     return max_score, maxr, maxc, max_scale, max_response_map
 
@@ -134,7 +154,12 @@ def compute_displacement(part_centers, face_shape):
     '''
     d = np.zeros((part_centers.shape[0],2))
     ### YOUR CODE HERE
-    pass
+    d = part_centers.copy()
+    print(d)
+    mu = np.mean(d,axis=0)
+    print('mu:',mu)
+    sigma = np.std(d,axis=0)
+    print('sigma:',sigma)
     ### END YOUR CODE
     return mu, sigma
         
@@ -186,4 +211,3 @@ def detect_multiple(image, response_map):
 
             
 
-    
