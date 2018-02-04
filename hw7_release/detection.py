@@ -154,15 +154,17 @@ def compute_displacement(part_centers, face_shape):
     '''
     d = np.zeros((part_centers.shape[0],2))
     ### YOUR CODE HERE
-    d = part_centers.copy()
-    print(d)
+    centery,centerx = (face_shape[0]-1)/2,(face_shape[1]-1)/2
+    center = np.array([centerx,centery])
+    d =  center- part_centers
     mu = np.mean(d,axis=0)
-    print('mu:',mu)
     sigma = np.std(d,axis=0)
-    print('sigma:',sigma)
     ### END YOUR CODE
     return mu, sigma
-        
+
+'''
+not so correct
+'''
 def shift_heatmap(heatmap, mu):
     '''First normalize the heatmap to make sure that all the values 
         are not larger than 1.
@@ -175,7 +177,12 @@ def shift_heatmap(heatmap, mu):
             new_heatmap: np array of (h,w)
     '''
     ### YOUR CODE HERE
-    pass
+    h,w = heatmap.shape
+    heatmap = heatmap/np.sqrt(np.sum(heatmap**2))
+    y_shift = int(mu[0])
+    x_shift = int(mu[1])
+    new_heatmap = np.roll(heatmap,y_shift,axis=0)
+    new_heatmap = np.roll(new_heatmap,x_shift,axis=1)
     ### END YOUR CODE
     return new_heatmap
     
@@ -195,7 +202,14 @@ def gaussian_heatmap(heatmap_face, heatmaps, sigmas):
         new_image: an image np array of (h,w) after gaussian convoluted
     '''
     ### YOUR CODE HERE
-    pass
+    heatmap = np.zeros_like(heatmap_face)
+    for i in range(len(sigmas)):
+        gaussion_map = gaussian(heatmaps[i],sigma=sigmas[i])
+        heatmap+=gaussion_map
+    heatmap+=heatmap_face
+    index=np.argmax(heatmap)
+    r = index//heatmap_face.shape[0]
+    c = index%heatmap_face.shape[1]
     ### END YOUR CODE
     return heatmap, r , c
             
