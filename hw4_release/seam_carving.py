@@ -67,23 +67,18 @@ def compute_cost(image, energy, axis=1):
     ### YOUR CODE HERE
     for i in range(1,H):
         for j in range(W):
-            if j-1>=0:
-                c1 = cost[i-1,j-1]
-            else:
-                c1 = 1e10
-            c2 = cost[i-1,j]
-            if j+1<W:
-                c3 = cost[i-1,j+1]
-            else:
-                c3 = 1e10
-            minc = min(min(c1,c2),c3)
-            cost[i,j]=energy[i,j]+minc
-            if minc==c1:
+            c_left = cost[i-1,j-1] if j>0 else 1e10
+            c_mid = cost[i-1,j]
+            c_right = cost[i-1,j+1] if j<W-1 else 1e10
+            min_c = min(min(c_left,c_mid),c_right)
+            cost[i,j]=energy[i,j]+min_c
+            if min_c==c_left:
                 paths[i,j]=-1
-            elif minc==c2:
+            elif min_c==c_mid:
                 paths[i,j]=0
             else:
                 paths[i,j]=1
+
     ### END YOUR CODE
 
     if axis == 0:
@@ -506,11 +501,21 @@ def reduce_fast(image, size, axis=1, efunc=energy_function, cfunc=compute_cost):
 
     # not implemented correctly, just the same as normal reduce for test
     ### YOUR CODE HERE
+    energy = efunc(out)
     while out.shape[1] > size:
-        energy = efunc(out)
         cost, paths = cfunc(out, energy)
-        seam = backtrack_seam(paths, np.argmin(cost[-1]))
+        end = np.argmin(cost[-1])
+        seam = backtrack_seam(paths, end)
+        # Get the seam area
+        i = np.min(seam)
+        j = np.max(seam)
         out = remove_seam(out, seam)
+        if i <= 3:
+            energy = np.c_[efunc(out[:, 0: j + 2])[:, : -1], energy[:, j + 2:]]
+        elif j >= out.shape[1] - 3:
+            energy = np.c_[energy[:, 0: i - 1], efunc(out[:, i - 3:])[:, 2:]]
+        else:
+            energy = np.c_[energy[:, 0: i - 1], efunc(out[:, i - 3: j + 2])[:, 2: -1], energy[:, j + 2:]]
     ### END YOUR CODE
 
     assert out.shape[1] == size, "Output doesn't have the right shape"

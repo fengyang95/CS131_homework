@@ -89,7 +89,7 @@ def iterative_lucas_kanade(img1, img2, keypoints,
 
     for y, x, gy, gx in np.hstack((keypoints, g)):
         v = np.zeros(2)  # Initialize flow vector as zero vector
-        y1 = int(round(y));
+        y1 = int(round(y))
         x1 = int(round(x))
 
         # TODO: Compute inverse of G at point (x1, y1)
