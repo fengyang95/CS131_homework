@@ -65,9 +65,11 @@ def convert_to_grey_scale(image):
     out = None
 
     ### YOUR CODE HERE
-    pass
+    r,g,b=image[:,:,0],image[:,:,1],image[:,:,2]
+    gray=0.229*r+0.587*g+0.114*b
+    out=gray
     ### END YOUR CODE
-
+    
     return out
 
 def rgb_decomposition(image, channel):
@@ -84,7 +86,19 @@ def rgb_decomposition(image, channel):
     out = None
 
     ### YOUR CODE HERE
-    pass
+    out=np.zeros_like(image)
+    index=None
+    if channel=='R':
+        index=0
+    elif channel=='G':
+        index=1
+    elif channel=='B':
+        index=2
+    else:
+        raise ValueError("channel invalid")
+    for i in range(3):
+        if i!=index:
+            out[:,:,i]=image[:,:,i]
     ### END YOUR CODE
 
     return out
@@ -104,7 +118,8 @@ def lab_decomposition(image, channel):
     out = None
 
     ### YOUR CODE HERE
-    pass
+    channel_map={'L':0,'A':1,'B':2}
+    out=lab[:,:,channel_map[channel]]
     ### END YOUR CODE
 
     return out
@@ -124,7 +139,8 @@ def hsv_decomposition(image, channel='H'):
     out = None
 
     ### YOUR CODE HERE
-    pass
+    channel_map={'H':0,'S':1,'V':2}
+    out=hsv[:,:,channel_map[channel]]
     ### END YOUR CODE
 
     return out
@@ -145,7 +161,9 @@ def mix_images(image1, image2, channel1, channel2):
 
     out = None
     ### YOUR CODE HERE
-    pass
+    out_left=rgb_decomposition(image1,channel1)
+    out_right=rgb_decomposition(image2,channel2)
+    out=np.concatenate((out_left,out_right),axis=1)
     ### END YOUR CODE
 
     return out

@@ -29,9 +29,10 @@ def matrix_mult(M, vector1, vector2):
     """
     out = None
     ### YOUR CODE HERE
-    left = dot_product(vector1,vector2)
-    right = np.matmul(M, vector1)
-    out = np.matmul(left, right)
+    left = (vector1.dot(vector2))
+    print(left.shape)
+    right = (M*vector1)
+    out = (left*right)
     ### END YOUR CODE
 
     return out
