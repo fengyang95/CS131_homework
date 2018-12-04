@@ -33,7 +33,10 @@ class PCA(object):
         # YOUR CODE HERE
         # 1. Compute the mean and store it in self.mean
         # 2. Apply either method to `X_centered`
-        pass
+        self.mean=np.mean(X,axis=0)
+        X_centered=X-self.mean
+        vecs,_=self._svd(X)
+        self.W_pca=vecs
         # END YOUR CODE
 
         # Make sure that X_centered has mean zero
@@ -123,7 +126,8 @@ class PCA(object):
         # We need to modify X in two steps:
         #     1. first substract the mean stored during `fit`
         #     2. then project onto a subspace of dimension `n_components` using `self.W_pca`
-        pass
+        X_proj=X-self.mean
+        X_proj=X_proj.dot(self.W_pca[:,:n_components])
         # END YOUR CODE
 
         assert X_proj.shape == (N, n_components), "X_proj doesn't have the right shape"
@@ -149,6 +153,9 @@ class PCA(object):
         # Steps:
         #     1. project back onto the original space of dimension D
         #     2. add the mean that we substracted in `transform`
+        X=np.zeros((N,self.W_pca.shape[1]))
+        X[:,:n_components]=X_proj
+        X=X.dot(np.linalg.inv(self.W_pca))+self.mean
         pass
         # END YOUR CODE
 
@@ -189,6 +196,9 @@ class LDA(object):
         # Use `scipy.linalg.eig` instead of numpy's eigenvalue solver.
         # Don't forget to sort the values and vectors in descending order.
         pass
+        evalues,e_vecs=scipy.linalg.eig(np.linalg.inv(scatter_within).dot(scatter_between))
+        indices=np.argsort(evalues)[::-1]
+        e_vecs=e_vecs[:,indices]
         # END YOUR CODE
 
         self.W_lda = e_vecs
@@ -225,7 +235,9 @@ class LDA(object):
         for i in np.unique(y):
             # YOUR CODE HERE
             # Get the covariance matrix for class i, and add it to scatter_within
-            pass
+            X_i=X[np.where(y==i)]
+            mu_i=np.mean(X_i,axis=0)
+            scatter_within+=((X_i-mu_i).T.dot(X_i-mu_i))
             # END YOUR CODE
 
         return scatter_within
@@ -254,7 +266,9 @@ class LDA(object):
         mu = X.mean(axis=0)
         for i in np.unique(y):
             # YOUR CODE HERE
-            pass
+            X_i = X[np.where(y == i)]
+            mu_i = np.mean(X_i, axis=0)
+            scatter_between+=(len(y[y==i])*((mu_i-mu).dot((mu_i-mu).T)))
             # END YOUR CODE
 
         return scatter_between
@@ -273,6 +287,7 @@ class LDA(object):
         X_proj = None
         # YOUR CODE HERE
         # project onto a subspace of dimension `n_components` using `self.W_lda`
+        X_proj = X.dot(self.W_lda[:, :n_components])
         pass
         # END YOUR CODE
 
