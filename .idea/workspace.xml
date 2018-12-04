@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06f68522-4165-4951-84de-0660411bec49" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/CS131_homework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CS131_homework.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw0_release/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1_release/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw2_release/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3_release/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4_release/.ipynb_checkpoints/hw4-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/hw4_release/.ipynb_checkpoints/hw4-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4_release/hw4.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/hw4_release/hw4.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4_release/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw5_release/requirements.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hw6_release/.ipynb_checkpoints/hw6-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/hw6_release/.ipynb_checkpoints/hw6-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw6_release/features.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw6_release/features.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw6_release/hw6.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/hw6_release/hw6.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw6_release/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw7_release/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw8_release/requirements.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +24,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw7_release/detection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
+            <state relative-caret-position="3895">
               <caret line="211" column="35" selection-start-line="211" selection-start-column="35" selection-end-line="211" selection-end-column="35" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -48,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw7_release/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
+            <state relative-caret-position="57">
               <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
               <folding>
                 <element signature="e#32#50#0" expanded="true" />
@@ -65,7 +53,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw8_release/motion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2412">
+            <state relative-caret-position="2299">
               <caret line="122" column="19" selection-start-line="122" selection-start-column="19" selection-end-line="122" selection-end-column="19" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -88,7 +76,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw6_release/compression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
+            <state relative-caret-position="494">
               <caret line="26" column="77" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
             </state>
           </provider>
@@ -106,8 +94,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hw6_release/features.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="198" column="91" selection-start-line="198" selection-start-column="91" selection-end-line="198" selection-end-column="91" />
+            <state relative-caret-position="-494">
+              <caret line="163" column="29" selection-start-line="163" selection-start-column="26" selection-end-line="163" selection-end-column="29" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -118,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://D:/Anaconda/Lib/site-packages/numpy/linalg/linalg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="1020" column="4" selection-start-line="1020" selection-start-column="4" selection-end-line="1020" selection-end-column="4" />
+            <state relative-caret-position="24662">
+              <caret line="1298" column="4" selection-start-line="1298" selection-start-column="4" selection-end-line="1298" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -127,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw6_release/k_nearest_neighbor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="124" column="35" selection-start-line="124" selection-start-column="35" selection-end-line="124" selection-end-column="35" />
+            <state relative-caret-position="1349">
+              <caret line="71" column="40" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -176,6 +164,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,16 +172,10 @@
               <item name="CS131_homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS131_homework" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CS131_homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS131_homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw6_release" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,7 +284,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1517307357249</updated>
-      <workItem from="1543885028559" duration="9646000" />
+      <workItem from="1543885028559" duration="13650000" />
+      <workItem from="1543907073280" duration="3233000" />
     </task>
     <task id="LOCAL-00001" summary="add homework4">
       <created>1517477749442</created>
@@ -356,13 +340,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9646000" />
+    <option name="totallyTimeSpent" value="16883000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4924078" visible="true" weight="0.17312661" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4924078" visible="true" weight="0.17571059" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5075922" side_tool="true" weight="0.16925065" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -494,34 +478,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw8_release/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw7_release/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw6_release/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw4_release/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw3_release/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw2_release/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw1_release/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw0_release/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/hw8_release/requirements.txt" />
+    <entry file="file://$PROJECT_DIR$/hw7_release/requirements.txt" />
+    <entry file="file://$PROJECT_DIR$/hw6_release/requirements.txt" />
+    <entry file="file://$PROJECT_DIR$/hw4_release/requirements.txt" />
+    <entry file="file://$PROJECT_DIR$/hw3_release/requirements.txt" />
+    <entry file="file://$PROJECT_DIR$/hw2_release/requirements.txt" />
+    <entry file="file://$PROJECT_DIR$/hw1_release/requirements.txt" />
+    <entry file="file://$PROJECT_DIR$/hw0_release/requirements.txt" />
     <entry file="file://$PROJECT_DIR$/hw0_release/linalg.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="951">
@@ -584,12 +548,9 @@
     <entry file="file://$PROJECT_DIR$/hw4_release/imgs/wyeth_mask.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw4_release/imgs/wyeth.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/hw7_release/detection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
+        <state relative-caret-position="3895">
           <caret line="211" column="35" selection-start-line="211" selection-start-column="35" selection-end-line="211" selection-end-column="35" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -599,7 +560,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hw7_release/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
+        <state relative-caret-position="57">
           <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
           <folding>
             <element signature="e#32#50#0" expanded="true" />
@@ -607,16 +568,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw7_release/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="14" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="14" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/hw4_release/imgs/wyeth.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/hw8_release/motion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2412">
+        <state relative-caret-position="2299">
           <caret line="122" column="19" selection-start-line="122" selection-start-column="19" selection-end-line="122" selection-end-column="19" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -635,29 +592,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hw6_release/compression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
+        <state relative-caret-position="494">
           <caret line="26" column="77" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw6_release/k_nearest_neighbor.py">
+    <entry file="file://$PROJECT_DIR$/hw7_release/util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="124" column="35" selection-start-line="124" selection-start-column="35" selection-end-line="124" selection-end-column="35" />
+        <state relative-caret-position="19">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://D:/Anaconda/Lib/site-packages/numpy/linalg/linalg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="1020" column="4" selection-start-line="1020" selection-start-column="4" selection-end-line="1020" selection-end-column="4" />
+        <state relative-caret-position="24662">
+          <caret line="1298" column="4" selection-start-line="1298" selection-start-column="4" selection-end-line="1298" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hw6_release/k_nearest_neighbor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1349">
+          <caret line="71" column="40" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hw6_release/features.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="198" column="91" selection-start-line="198" selection-start-column="91" selection-end-line="198" selection-end-column="91" />
+        <state relative-caret-position="-494">
+          <caret line="163" column="29" selection-start-line="163" selection-start-column="26" selection-end-line="163" selection-end-column="29" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

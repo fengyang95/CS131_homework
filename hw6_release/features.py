@@ -35,7 +35,10 @@ class PCA(object):
         # 2. Apply either method to `X_centered`
         self.mean=np.mean(X,axis=0)
         X_centered=X-self.mean
-        vecs,_=self._svd(X)
+        if method=='svd':
+            vecs,_=self._svd(X)
+        else:
+            vecs,_=self._eigen_decomp(X)
         self.W_pca=vecs
         # END YOUR CODE
 
@@ -75,16 +78,16 @@ class PCA(object):
         #     2. compute the eigenvalues and eigenvectors of the covariance matrix
         #     3. Sort both of them in decreasing order (ex: 1.0 > 0.5 > 0.0 > -0.2 > -1.2)
         covariance = X.T.dot(X)
-        print('covariance.shape: ',covariance.shape)
         e_vals, e_vecs = np.linalg.eig(covariance)
+        indices=np.argsort(-e_vals)
+        e_vals=e_vals[indices]
+        e_vecs=e_vecs[:,indices]
         # END YOUR CODE
-        print(e_vals.shape, '  ', e_vecs.shape)
-        print('N D ',N,' ',D)
         # Check the output shapes
         assert e_vals.shape == (D,)
         assert e_vecs.shape == (D, D)
 
-        return e_vecs, e_vals
+        return e_vecs.astype(np.float64), e_vals.astype(np.float64)
 
     def _svd(self, X):
         """Performs Singular Value Decomposition (SVD) of X.
@@ -102,13 +105,16 @@ class PCA(object):
         # YOUR CODE HERE
         # Here, compute the SVD of X
         # Make sure to return vecs as the matrix of vectors where each column is a singular vector
-        _, vals, vecs = np.linalg.svd(X)
+        vecs, vals, _ = np.linalg.svd(X.T)
+        #indices=np.argsort(vals)[::-1]
+        #vals=vals[indices][:min(N,D)]
+        #vecs=vecs[:,indices]
         # END YOUR CODE
         assert vecs.shape == (D, D)
         K = min(N, D)
         assert vals.shape == (K,)
 
-        return vecs, vals
+        return vecs.real, vals.real
 
     def transform(self, X, n_components):
         """Center and project X onto a lower dimensional space using self.W_pca.
@@ -268,7 +274,7 @@ class LDA(object):
             # YOUR CODE HERE
             X_i = X[np.where(y == i)]
             mu_i = np.mean(X_i, axis=0)
-            scatter_between+=(len(y[y==i])*((mu_i-mu).dot((mu_i-mu).T)))
+            scatter_between+=(len(y[y==i])*((mu_i-mu).T.dot((mu_i-mu))))
             # END YOUR CODE
 
         return scatter_between
